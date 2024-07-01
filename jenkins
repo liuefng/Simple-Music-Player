@@ -1,2 +1,21 @@
-@Library(['pipeline-libraries@master', 'park-apps-shared-libraries@master']) 
-androidComponentPipeline('musicplayer','https://github.com/liuefng/Simple-Music-Player.git', true, '', false, false, true)
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
