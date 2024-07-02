@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh './gradlew assembleRelease'
             }
         }
         stage('Test') {
@@ -17,5 +18,11 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'app/build/intermediates/apk/release/*.apk', fingerprint: true
+        }
+
     }
 }
